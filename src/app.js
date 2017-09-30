@@ -115,7 +115,7 @@ app.post('/start_train', function(req, res) {
   // train the classifier
   let modelName = req.body.modelName;
   let classifierName = req.body.classifierName;
-  const childTrain = exec('python src/classifier.py TRAIN'
+  const childTrain = exec('python /root/Facenet/src/classifier.py TRAIN'
   + '/root/Facenet-Server/data/train_data/'
   + '/root/model/' + modelName + '/' + modelName + '.pb'
   + '/root/Facenet-Server/data/model/' + classifierName + '.pkl'
