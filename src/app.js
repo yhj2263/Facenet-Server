@@ -118,7 +118,7 @@ app.post('/start_train', function(req, res) {
   const childTrain = exec('python /root/Facenet/src/classifier.py TRAIN '
   + '/root/Facenet-Server/data/train_data/ '
   + '/root/model/' + modelName + '/' + modelName + '.pb '
-  + '/root/Facenet-Server/data/model/' + classifierName + '.pkl '
+  + '/root/Facenet-Server/data/classifier/' + classifierName + '.pkl '
   + '--batch_size 1000',
   function(error, stdout, stderr) {
     console.log(stdout);
@@ -138,6 +138,26 @@ app.post('/start_classify', function(req, res) {
   if (!req.body) {
     return res.status(400).send('No files were uploaded.');
   }
+  console.log('classifying ' + ' with ' + req.body.classifierName);
+
+  // classifying with the specified classifier
+  let modelName = req.body.modelName;
+  let classifierName = req.body.classifierName;
+  const childTrain = exec('python /root/Facenet/src/classifier.py CLASSIFY '
+  + '/root/Facenet-Server/data/test_data/ '
+  + '/root/model/' + modelName + '/' + modelName + '.pb '
+  + '/root/Facenet-Server/data/classifier/' + classifierName + '.pkl '
+  + '--batch_size 1000',
+  function(error, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    }
+  });
+
+  // Used to get rid of the warning
+  if (!childTrain) {}
 });
 
 // Used to send model information to the front end
