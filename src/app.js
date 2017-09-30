@@ -5,6 +5,7 @@ const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const exec = require('child_process').exec;
 const modelIndex = require('../data/model/index.json');
+const classifierIndex = require('../data/classifier/index.json');
 
 const app = express();
 
@@ -107,13 +108,45 @@ app.post('/start_train', function(req, res) {
   if (!req.body) {
     return res.status(400).send('No files were uploaded.');
   }
-  console.log('file uploaded!');
-  res.send(req.body.msg + ' recieved!');
-  console.log(req.body);
+  console.log('trainning ' + req.body.classifierName + ' with ' +
+    req.body.modelName);
+  // console.log(req.body);
+
+  // train the classifier
+  let modelName = req.body.modelName;
+  let classifierName = req.body.classifierName;
+  const childTrain = exec('python src/classifier.py TRAIN'
+  + '/root/Facenet-Server/data/train_data/'
+  + '/root/model/' + modelName + '/' + modelName + '.pb'
+  + '/root/Facenet-Server/data/model/' + classifierName + '.pkl'
+  + '--batch_size 1000',
+  function(error, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    }
+  });
+
+  // Used to get rid of the warning
+  if (!childTrain) {}
 });
 
+// Used for handling post request to start classifying
+app.post('/start_classify', function(req, res) {
+  // Error 400 if the file is missing
+  if (!req.body) {
+    return res.status(400).send('No files were uploaded.');
+  }
+});
+
+// Used to send model information to the front end
 app.get('/model', function(req, res) {
   res.json(modelIndex);
+});
+
+app.get('/classifier', function(req, res) {
+  res.json(classifierIndex);
 });
 
 // The server is running on port 8081
