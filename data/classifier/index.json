@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Classifier1",
+    "accuracy": "0.8",
+    "trainSet": "CASIA_WebFace"
+  },
+
+  {
+    "name": "Classifier2",
+    "accuracy": "0.992",
+    "trainSet": "MS-Celeb-1M"
+  }
+]
