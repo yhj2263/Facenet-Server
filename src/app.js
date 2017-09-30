@@ -115,7 +115,7 @@ app.post('/start_train', function(req, res) {
   // train the classifier
   let modelName = req.body.modelName;
   let classifierName = req.body.classifierName;
-  const childTrain = exec('python -W ignore '
+  const childTrain = exec('python '
   + '/root/Facenet/src/classifier.py TRAIN '
   + '/root/Facenet-Server/data/train_data/ '
   + '/root/model/' + modelName + '/' + modelName + '.pb '
@@ -144,7 +144,7 @@ app.post('/start_classify', function(req, res) {
   // classifying with the specified classifier
   let modelName = req.body.modelName;
   let classifierName = req.body.classifierName;
-  const childTrain = exec('python - W ignore '
+  const childTrain = exec('python '
   + '/root/Facenet/src/classifier.py CLASSIFY '
   + '/root/Facenet-Server/data/test_data/ '
   + '/root/model/' + modelName + '/' + modelName + '.pb '
