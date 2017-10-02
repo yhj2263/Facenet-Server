@@ -4,8 +4,6 @@ const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const exec = require('child_process').exec;
-const modelIndex = require('../data/model/index.json');
-const classifierIndex = require('../data/classifier/index.json');
 
 const app = express();
 
@@ -164,10 +162,12 @@ app.post('/start_classify', function(req, res) {
 
 // Used to send model information to the front end
 app.get('/model', function(req, res) {
+  const modelIndex = require('../data/model/index.json');
   res.json(modelIndex);
 });
 
 app.get('/classifier', function(req, res) {
+  const classifierIndex = require('../data/classifier/index.json');
   res.json(classifierIndex);
 });
 
