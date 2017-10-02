@@ -146,7 +146,7 @@ app.post('/start_classify', function(req, res) {
   + '/root/Facenet/src/classifier.py CLASSIFY '
   + '/root/Facenet-Server/data/test_data/ '
   + '/root/model/' + modelName + '/' + modelName + '.pb '
-  + '/root/Facenet-Server/data/classifier/' + classifierName
+  + '/root/Facenet-Server/data/classifier/' + classifierName + ' '
   + '--batch_size 1000',
   function(error, stdout, stderr) {
     console.log(stdout);
