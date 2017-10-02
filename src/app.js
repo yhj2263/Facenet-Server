@@ -142,11 +142,11 @@ app.post('/start_classify', function(req, res) {
   // classifying with the specified classifier
   let modelName = req.body.modelName;
   let classifierName = req.body.classifierName;
-  const childTrain = exec('python '
+  const childClassify = exec('python '
   + '/root/Facenet/src/classifier.py CLASSIFY '
   + '/root/Facenet-Server/data/test_data/ '
   + '/root/model/' + modelName + '/' + modelName + '.pb '
-  + '/root/Facenet-Server/data/classifier/' + classifierName + '.pkl '
+  + '/root/Facenet-Server/data/classifier/' + classifierName
   + '--batch_size 1000',
   function(error, stdout, stderr) {
     console.log(stdout);
@@ -157,7 +157,7 @@ app.post('/start_classify', function(req, res) {
   });
   console.log('child created');
   // Used to get rid of the warning
-  if (!childTrain) {}
+  if (!childClassify) {}
 });
 
 // Used to send model information to the front end
