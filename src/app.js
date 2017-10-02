@@ -155,7 +155,7 @@ app.post('/start_classify', function(req, res) {
       console.log('exec error: ' + error);
     }
   });
-
+  console.log('child created');
   // Used to get rid of the warning
   if (!childTrain) {}
 });
