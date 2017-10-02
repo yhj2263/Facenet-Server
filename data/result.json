@@ -1,0 +1,21 @@
+[
+    {
+        "path": "/root/Facenet-Server/data/test_data/no_label/06.jpg",
+        "name": "Mao Zedong"
+    }
+,{
+    "path": "/root/Facenet-Server/data/test_data/no_label/02.jpg",
+    "name": "Mao Zedong"
+},{
+    "path": "/root/Facenet-Server/data/test_data/no_label/03.jpg",
+    "name": "Jackie Chan"
+},{
+    "path": "/root/Facenet-Server/data/test_data/no_label/04.jpg",
+    "name": "Mao Zedong"
+},{
+    "path": "/root/Facenet-Server/data/test_data/no_label/05.jpg",
+    "name": "Jackie Chan"
+},{
+    "path": "/root/Facenet-Server/data/test_data/no_label/01.jpg",
+    "name": "Jackie Chan"
+}]

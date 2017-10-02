@@ -162,13 +162,18 @@ app.post('/start_classify', function(req, res) {
 
 // Used to send model information to the front end
 app.get('/model', function(req, res) {
-  const modelIndex = require('../data/model/index.json');
+  let modelIndex = require('../data/model/index.json');
   res.json(modelIndex);
 });
 
 app.get('/classifier', function(req, res) {
-  const classifierIndex = require('../data/classifier/index.json');
+  let classifierIndex = require('../data/classifier/index.json');
   res.json(classifierIndex);
+});
+
+app.get('/classify_result', function(req, res) {
+  let classifyResult = require('../data/result.json');
+  res.json(classifyResult);
 });
 
 // The server is running on port 8081
