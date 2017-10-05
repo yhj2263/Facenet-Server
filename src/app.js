@@ -94,11 +94,11 @@ app.post('/upload_test', function(req, res) {
     if (error !== null) {
       console.log('exec error: ' + error);
     }
+    res.send('file unzipped');
   });
 
   // Used to get rid of the warning
   if (!childUnzip) {}
-  res.send('file unzipped');
 });
 
 // Used for handling post request to start training classifier
