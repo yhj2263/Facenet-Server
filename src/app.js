@@ -126,12 +126,12 @@ app.post('/start_train', function(req, res) {
     if (error !== null) {
       console.log('exec error: ' + error);
     }
+    res.send('trainning finished');
   });
 
   // Used to get rid of the warning
   if (!childTrain) {}
-  res.send('trainning finished');
-  resolve(10);
+
 });
 
 // Used for handling post request to start classifying
