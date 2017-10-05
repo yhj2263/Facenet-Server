@@ -42,7 +42,7 @@ app.post('/upload_train', function(req, res) {
   });
 
   console.log('file uploaded!');
-  res.send('file uploaded!');
+
 
   // TODO: The unziped file may contain dummy files, figure out a way to remove
   // Unzip the uploaded file
@@ -59,7 +59,7 @@ app.post('/upload_train', function(req, res) {
 
   // Used to get rid of the warning
   if (!childUnzip) {}
-  console.log('file unziped!');
+  res.send('file unzipped!');
 });
 
 // Used for handling post request to upload file
@@ -81,7 +81,7 @@ app.post('/upload_test', function(req, res) {
   });
 
   console.log('file uploaded!');
-  res.send('file uploaded!');
+
 
   // TODO: The unziped file may contain dummy files, figure out a way to remove
   // Unzip the uploaded file
@@ -98,7 +98,7 @@ app.post('/upload_test', function(req, res) {
 
   // Used to get rid of the warning
   if (!childUnzip) {}
-  console.log('file unziped!');
+  res.send('file unzipped');
 });
 
 // Used for handling post request to start training classifier
