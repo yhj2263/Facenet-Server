@@ -130,6 +130,7 @@ app.post('/start_train', function(req, res) {
 
   // Used to get rid of the warning
   if (!childTrain) {}
+  res.send('trainning finished');
 });
 
 // Used for handling post request to start classifying
