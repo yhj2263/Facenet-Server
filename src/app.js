@@ -12,7 +12,8 @@ app.use(bodyParser.json());
 app.use(fileUpload());
 // TODO: check the security of this module
 app.use(cors());
-
+// Mount a file server at '/'
+app.use(express.static(__dirname + '/../data/test_data'));
 console.log('node is running!');
 
 // TODO: refactor this into different services
