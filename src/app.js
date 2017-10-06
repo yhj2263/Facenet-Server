@@ -95,7 +95,7 @@ app.post('/upload_test', function(req, res) {
       console.log('exec error: ' + error);
     }
     res.send('file unzipped');
-    console.log('file unzipped')
+    console.log('file unzipped');
   });
 
   // Used to get rid of the warning
@@ -157,7 +157,7 @@ app.post('/start_classify', function(req, res) {
     if (error !== null) {
       console.log('exec error: ' + error);
     }
-    res.send('classification finished')
+    res.send('classification finished');
   });
   console.log('child created');
   // Used to get rid of the warning
