@@ -145,7 +145,7 @@ app.post('/start_classify', function(req, res) {
   // classifying with the specified classifier
   let modelName = req.body.modelName;
   let classifierName = req.body.classifierName;
-  const childClassify = exec('python '
+  const childClassify = fork('python '
   + '/root/Facenet/src/classifier.py CLASSIFY '
   + '/root/Facenet-Server/data/test_data/ '
   + '/root/model/' + modelName + '/' + modelName + '.pb '
@@ -157,9 +157,9 @@ app.post('/start_classify', function(req, res) {
     if (error !== null) {
       console.log('exec error: ' + error);
     }
+    console.log('classification finished');
     res.send('classification finished');
   });
-  console.log('child created');
   // Used to get rid of the warning
   if (!childClassify) {}
 });
