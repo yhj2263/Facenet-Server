@@ -145,7 +145,7 @@ app.post('/start_classify', function(req, res) {
   // classifying with the specified classifier
   let modelName = req.body.modelName;
   let classifierName = req.body.classifierName;
-  const childClassify = fork('python '
+  const childClassify = exec('python '
   + '/root/Facenet/src/classifier.py CLASSIFY '
   + '/root/Facenet-Server/data/test_data/ '
   + '/root/model/' + modelName + '/' + modelName + '.pb '
