@@ -43,7 +43,6 @@ app.post('/upload_train', function(req, res) {
 
   console.log('file uploaded!');
 
-
   // TODO: The unziped file may contain dummy files, figure out a way to remove
   // Unzip the uploaded file
   console.log('unziping file');
@@ -78,28 +77,25 @@ app.post('/upload_test', function(req, res) {
     if (err) {
       return res.status(500).send(err);
     }
+    console.log('file uploaded!');
+
+    // TODO: The unziped file may contain dummy files, figure out a way to remove
+    // Unzip the uploaded file
+    console.log('unziping file');
+    const childUnzip = exec('unzip ' + __dirname + '/../data/' + sampleFile.name +
+    ' -d ' + __dirname + '/../data/test_data',
+    function(error, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      if (error !== null) {
+        console.log('exec error: ' + error);
+      }
+      res.send('file unzipped');
+      console.log('file unzipped');
+    });
+    // Used to get rid of the warning
+    if (!childUnzip) {}
   });
-
-  console.log('file uploaded!');
-
-
-  // TODO: The unziped file may contain dummy files, figure out a way to remove
-  // Unzip the uploaded file
-  console.log('unziping file');
-  const childUnzip = exec('unzip ' + __dirname + '/../data/' + sampleFile.name +
-  ' -d ' + __dirname + '/../data/test_data',
-  function(error, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    if (error !== null) {
-      console.log('exec error: ' + error);
-    }
-    res.send('file unzipped');
-    console.log('file unzipped');
-  });
-
-  // Used to get rid of the warning
-  if (!childUnzip) {}
 });
 
 // Used for handling post request to start training classifier
